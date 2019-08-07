@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Why Testing?Before discussing why testing is useful and how to do it, let’s take a minute to define what unit testing actually is. “Testing”, in general, programming terms, is the practice of writing">
+<meta name="keywords" content="clean code,TDD,testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Improving Your code Unit Testing">
+<meta property="og:url" content="http://yoursite.com/2018/07/22/improve-code-quality/index.html">
+<meta property="og:site_name" content="Ahmed Salah">
+<meta property="og:description" content="Why Testing?Before discussing why testing is useful and how to do it, let’s take a minute to define what unit testing actually is. “Testing”, in general, programming terms, is the practice of writing">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/07/22/improve-code-quality/python-assertions-list.jpeg">
+<meta property="og:image" content="http://yoursite.com/2018/07/22/improve-code-quality/coverage-report-1.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/22/improve-code-quality/coverage-report-2.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/22/improve-code-quality/coverage-html-1.png">
+<meta property="og:image" content="http://yoursite.com/2018/07/22/improve-code-quality/coverage-html-2.png">
+<meta property="og:updated_time" content="2019-08-07T22:27:17.009Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Improving Your code Unit Testing">
+<meta name="twitter:description" content="Why Testing?Before discussing why testing is useful and how to do it, let’s take a minute to define what unit testing actually is. “Testing”, in general, programming terms, is the practice of writing">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/22/improve-code-quality/python-assertions-list.jpeg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Improving Your code Unit Testing</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/07/22/improve-code-quality/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/07/22/improve-code-quality/&text=Improving Your code Unit Testing"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/07/22/improve-code-quality/&is_video=false&description=Improving Your code Unit Testing"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Improving Your code Unit Testing&body=Check out this article: http://yoursite.com/2018/07/22/improve-code-quality/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/07/22/improve-code-quality/&name=Improving Your code Unit Testing&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Testing"><span class="toc-number">1.</span> <span class="toc-text">Why Testing?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-kinds-of-bugs-can-we-catch-with-testing"><span class="toc-number">1.1.</span> <span class="toc-text">What kinds of bugs can we catch with testing?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-would-you-waste-your-time-on-such-thing"><span class="toc-number">2.</span> <span class="toc-text">Why would you waste your time on such thing?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#python"><span class="toc-number">2.1.</span> <span class="toc-text">python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#doctest"><span class="toc-number">2.2.</span> <span class="toc-text">doctest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-“usual”-Unit-Test"><span class="toc-number">2.3.</span> <span class="toc-text">The “usual” Unit Test</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Structure-of-A-Unit-Test"><span class="toc-number">3.</span> <span class="toc-text">Structure of A Unit Test</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fixing-Code-Properly"><span class="toc-number">4.</span> <span class="toc-text">Fixing Code Properly</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-Coverage"><span class="toc-number">4.1.</span> <span class="toc-text">Test Coverage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-number">4.2.</span> <span class="toc-text">installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage"><span class="toc-number">4.3.</span> <span class="toc-text">Usage</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-Reports"><span class="toc-number">5.</span> <span class="toc-text">HTML Reports</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Testing-web-apps"><span class="toc-number">5.1.</span> <span class="toc-text">Testing web apps</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Improving Your code Unit Testing
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Ahmed Salah</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-07-22T01:09:33.000Z" itemprop="datePublished">2018-07-22</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/TDD/">TDD</a>, <a class="tag-link" href="/tags/clean-code/">clean code</a>, <a class="tag-link" href="/tags/testing/">testing</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Why-Testing"><a href="#Why-Testing" class="headerlink" title="Why Testing?"></a>Why Testing?</h1><p>Before discussing <strong>why</strong> testing is useful and <strong>how</strong> to do it, let’s take a minute to define what unit testing actually is. “Testing”, in general, programming terms, is the practice of writing code that invokes the code it tests to catch bugs. It *<em>DOES NOT *</em>prove that code is correct. It just reports if the scenarios you had thought of are handled correctly.</p>
+<h2 id="What-kinds-of-bugs-can-we-catch-with-testing"><a href="#What-kinds-of-bugs-can-we-catch-with-testing" class="headerlink" title="What kinds of bugs can we catch with testing?"></a>What kinds of bugs can we catch with testing?</h2><ul>
+<li>syntax errors are</li>
+<li>Logic Errors perhaps you forget to limit a while loop and you get IndexError raised.</li>
+</ul>
+<p>All of these can be caught through careful testing.</p>
+<p>Unit testing specifically tests a single block ‘functionality’ of code in isolation.</p>
+<p>let’s say you have a simple function that sums two integers but you want to make sure that it works you can try by hand run it several times in your terminal or think of couple edge cases write simple test function like this</p>
+<h1 id="Why-would-you-waste-your-time-on-such-thing"><a href="#Why-would-you-waste-your-time-on-such-thing" class="headerlink" title="Why would you waste your time on such thing?"></a>Why would you waste your time on such thing?</h1><ol>
+<li><p>you wouldn’t get all the edge cases from the first time</p>
+</li>
+<li><p>If you want to be able to change your code and experiment with it you and be sure you didn’t break anything, unit testing is your friend</p>
+</li>
+<li><p>testing forces to be more rigorous about your code, possibly revealing logical errors</p>
+</li>
+<li><p>encourages modular, more organized code, which is a good practice</p>
+</li>
+<li><p>you don’t need actually to write all of this mess to test your code python and almost all modern languages have tools in place to help you</p>
+</li>
+</ol>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p>python is really pleasant when it comes to testing tools</p>
+<p>as it has to main tools to test your code</p>
+<ul>
+<li>doctest testing</li>
+<li>“usual” unit test</li>
+</ul>
+<h2 id="doctest"><a href="#doctest" class="headerlink" title="doctest"></a>doctest</h2><p>it is an amazing way to get started documenting your code and its structure helps other people get a more solid understanding of your code as you provide examples of what this function is exactly doing.</p>
+<script src="https://gist.github.com/salah-ahmed/38e64f2994aedb860cb34c006c1836db.js"></script>
+
+<p>this should fail and output something like this</p>
+<pre><code>Exception raised:
+Traceback (most recent call last):
+File “/home/ahmed/miniconda3/lib/python3.6/doctest.py”, line 1330, in __run
+compileflags, 1), test.globs)
+File “&lt;doctest sum.sum[1]&gt;”, line 1, in &lt;module&gt;
+sum(‘0’, 0)
+File “/home/ahmed/Desktop/career/interview_practice/py_code/generel/sum.py”, line 8, in sum
+return a+b
+TypeError: must be str, not int
+**********************************************************************
+1 items had failures:
+1 of 2 in sum.sum
+***Test Failed*** 1 failures.</code></pre><h2 id="The-“usual”-Unit-Test"><a href="#The-“usual”-Unit-Test" class="headerlink" title="The “usual” Unit Test"></a>The “usual” Unit Test</h2><p>as you might guessed this is not for exhaustive testing of all edge cases</p>
+<p>but it’s a nice thing to for documentation and small functions</p>
+<h1 id="Structure-of-A-Unit-Test"><a href="#Structure-of-A-Unit-Test" class="headerlink" title="Structure of A Unit Test"></a>Structure of A Unit Test</h1><p>you generally will have your code module.py and test file test_module.py</p>
+<script src="https://gist.github.com/salah-ahmed/523525d3b6de37f9c5a5ae9d93ee6491.js"></script>
+
+<pre><code>$ python -m unittest test_math.py</code></pre><p>List of assertions you will find it handy</p>
+<img src="/2018/07/22/improve-code-quality/python-assertions-list.jpeg">
+
+<h1 id="Fixing-Code-Properly"><a href="#Fixing-Code-Properly" class="headerlink" title="Fixing Code Properly"></a>Fixing Code Properly</h1><p>the purpose of writing unit tests is to take a step back and determine the best way to fix the issue. In this case, rather than adding an additional condition avoid adding glue that will fall apart later</p>
+<p>make your first step after failing a test is going back to pen and paper and think carefully about your code logic and what changes that will eliminate the problem cleanly and efficiently</p>
+<h2 id="Test-Coverage"><a href="#Test-Coverage" class="headerlink" title="Test Coverage"></a>Test Coverage</h2><p>how do you know if you’ve tested everything in your code ?</p>
+<p>One way to do is looking at each line of code and make sure that there’s a test that corresponds to it and every time you have an if or an l if, you need to test both branches of it, But this not a fun thing to do</p>
+<p>Thankfully there’s an Python library out there named <strong>coverage.py</strong> it handles the tedious task of testing every single line and branch in your code and gives you back some amazingly useful information</p>
+<h2 id="installation"><a href="#installation" class="headerlink" title="installation"></a>installation</h2><ul>
+<li>$ pip install coverage</li>
+</ul>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ul>
+<li><p>first make your app run automatically this is the easiest way to start with coverage</p>
+</li>
+<li><p>$ coverage run <test_file_name></test_file_name></p>
+</li>
+</ul>
+<p><em>nothing interesting will happen but when you run</em></p>
+<p>$ coverage report</p>
+<img src="/2018/07/22/improve-code-quality/coverage-report-1.png">
+<p>so as you can see *<em>coverage *</em>tells us that in the file math1.py there is 4 statements and we missed one of these statements this doesn’t necessarily that we missed a real case here but it’s nice flag to cheek again our work .</p>
+<p>let’s see what we have missed to know whether we missed a test here or everything is fine.</p>
+<p>$ coverage report -m</p>
+<img src="/2018/07/22/improve-code-quality/coverage-report-2.png">
+
+<p>so if we went to our file math.py at line 3 we missed a statement.<br>yep at line three we didn’t test the function sum so we should added</p>
+<p>as you have seen testing for how much of your code is covered can reveal cases that you didn’t test for, sure in real life it wouldn’t that trivial but if you applied systematic process it should be very easy to test and debug your code properly</p>
+<h1 id="HTML-Reports"><a href="#HTML-Reports" class="headerlink" title="HTML Reports"></a>HTML Reports</h1><p>a very nice feature of coverage that it can produce HTML reports which i find a lot more pleasant<br>than the command line version</p>
+<p>$ coverage html</p>
+<img src="/2018/07/22/improve-code-quality/coverage-html-1.png">
+
+<p>and if you clicked on math1.py you will see</p>
+<img src="/2018/07/22/improve-code-quality/coverage-html-2.png">
+
+<p>so here you go a way nicer looking interface it is not obvious from this example how useful this is but just imagine a dozen file with horrible coverage rate this will be really great help to find mistakes quickly.</p>
+<h2 id="Testing-web-apps"><a href="#Testing-web-apps" class="headerlink" title="Testing web apps"></a>Testing web apps</h2><p>there isn’t much here it’s the same mentality to test any type of application but as someone who wast just start learning i find it challenging to see what to test for so this light demo is here for people who are just getting started.</p>
+<ul>
+<li>assume that you have a web service built with flask and it simulates a dice roll.</li>
+</ul>
+<p>you might something similar to this</p>
+<p>Initially you would like to test for</p>
+<ul>
+<li>the values generated are actually correct</li>
+<li>the data is formatted properly</li>
+</ul>
+<p>so you can write your test this way</p>
+<p>let’s ignore flask and focus instead on the mental model</p>
+<ol>
+<li>you will need to find the tools offered by the framework you choose</li>
+<li>you should break down each chunk of your into path, request types</li>
+<li>after separating each path break down the functionality to</li>
+</ol>
+<ul>
+<li>who the data is represented</li>
+<li>is data has the expected values</li>
+</ul>
+<p>so as you see in the example above first i check that the data is in the expected range, then i check for the representation</p>
+<p><em>notice that this will give you a high coverage rate but there is a major flaw in the test take a second and think about it</em></p>
+<p>testing for a random value once is useless this test should be performed several times.</p>
+<p>if we did follow the three steps we agreed on and after we tested the ‘web’ part of the script we stooped for a minute and thought about it the code and it’s correctness we would have avoided such mistake</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Testing"><span class="toc-number">1.</span> <span class="toc-text">Why Testing?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-kinds-of-bugs-can-we-catch-with-testing"><span class="toc-number">1.1.</span> <span class="toc-text">What kinds of bugs can we catch with testing?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-would-you-waste-your-time-on-such-thing"><span class="toc-number">2.</span> <span class="toc-text">Why would you waste your time on such thing?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#python"><span class="toc-number">2.1.</span> <span class="toc-text">python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#doctest"><span class="toc-number">2.2.</span> <span class="toc-text">doctest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-“usual”-Unit-Test"><span class="toc-number">2.3.</span> <span class="toc-text">The “usual” Unit Test</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Structure-of-A-Unit-Test"><span class="toc-number">3.</span> <span class="toc-text">Structure of A Unit Test</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fixing-Code-Properly"><span class="toc-number">4.</span> <span class="toc-text">Fixing Code Properly</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Test-Coverage"><span class="toc-number">4.1.</span> <span class="toc-text">Test Coverage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-number">4.2.</span> <span class="toc-text">installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Usage"><span class="toc-number">4.3.</span> <span class="toc-text">Usage</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML-Reports"><span class="toc-number">5.</span> <span class="toc-text">HTML Reports</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Testing-web-apps"><span class="toc-number">5.1.</span> <span class="toc-text">Testing web apps</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/07/22/improve-code-quality/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/07/22/improve-code-quality/&text=Improving Your code Unit Testing"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/07/22/improve-code-quality/&is_video=false&description=Improving Your code Unit Testing"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Improving Your code Unit Testing&body=Check out this article: http://yoursite.com/2018/07/22/improve-code-quality/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/07/22/improve-code-quality/&title=Improving Your code Unit Testing"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/07/22/improve-code-quality/&name=Improving Your code Unit Testing&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 Ahmed Salah
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
