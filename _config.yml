@@ -77,4 +77,7 @@ theme_config:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/salah-ahmed/salah-ahmed
+  branch: [master] #published
+  message: [message] #leave this blank
