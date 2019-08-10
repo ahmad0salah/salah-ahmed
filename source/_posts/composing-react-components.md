@@ -1,6 +1,7 @@
 ---
 title: Composing ReactJS Components
 date: 2019-08-09 04:17:16
+tags:
   - ReactJS
   - JS
   - Front-End
